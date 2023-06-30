@@ -37,7 +37,7 @@ const RegisterScreen = () => {
           <TextInput placeholder="   Confirm Password" style={{ flex: 1, paddingVertical: 0 }} secureTextEntry={true} />
         </View>
 
-        <TouchableOpacity onPress={() => {}} style={{ backgroundColor: 'darkred', padding: 10, borderRadius: 10, marginBottom: 20 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('MainTabNavigator')} style={{ backgroundColor: 'darkred', padding: 10, borderRadius: 10, marginBottom: 20 }}>
           <Text style={{ textAlign: 'center', fontWeight: '800', fontSize: 20, color: 'white' }}>Sign Up</Text>
         </TouchableOpacity>
 
