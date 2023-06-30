@@ -1,31 +1,69 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Onboarding from 'react-native-onboarding-swiper';
 import { useNavigation } from "@react-navigation/native";
-import Home from './Home';
+import RegisterScreen from './RegisterScreen';
+import LoginScreen from './LoginScreen'
+
 
 const OnboardingScreen = () => {
   const navigation = useNavigation();
 
-  const DotComponent = ({ selected }) => {
-    return (
+  const DotComponent = ({ selected }) => (
+    <View
+      style={{
+        width: 9,
+        height: 9,
+        marginHorizontal: 4,
+        borderRadius: 4,
+        backgroundColor: selected ? 'red' : '#f87171',
+      }}
+    />
+  );
+
+  const ButtonComponent = ({ onPress, text }) => (
+    <TouchableOpacity onPress={onPress}>
       <View
         style={{
-          width: 8,
-          height: 8,
-          marginHorizontal: 4,
+          backgroundColor: 'darkred',
+          paddingHorizontal: 20,
+          paddingVertical: 8,
           borderRadius: 4,
-          backgroundColor: selected ? 'red' : '#f87171',
+          elevation: 6,
+          margin: 12,
         }}
-      />
+      >
+        <Text style={{ color: 'white' }}>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
+  const NextButtonComponent = ({ onPress }) => {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <View
+          style={{
+            backgroundColor: 'darkred',
+          paddingHorizontal: 20,
+          paddingVertical: 8,
+          borderRadius: 4,
+          elevation: 6,
+          margin: 12,
+          }}
+        >
+          <Text style={{ color: 'white' }}>Next</Text>
+        </View>
+      </TouchableOpacity>
     );
   };
 
   return (
     <Onboarding
-      onSkip={() => navigation.replace("Home")}
-      onDone={() => navigation.replace("Home")}
       DotComponent={DotComponent}
+      SkipButtonComponent={() => <ButtonComponent onPress={() => navigation.navigate("RegisterScreen")} text="Skip" />}
+      DoneButtonComponent={() => <ButtonComponent onPress={() => navigation.navigate("RegisterScreen")} text="Done" />}
+      NextButtonComponent={NextButtonComponent}
+      bottomBarColor={"white"}
       pages={[
         {
           backgroundColor: '#fff',
@@ -49,5 +87,4 @@ const OnboardingScreen = () => {
     />
   );
 };
-
 export default OnboardingScreen;
