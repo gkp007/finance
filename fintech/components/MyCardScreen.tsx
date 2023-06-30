@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 function MyCardScreen() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>MyCardScreen</Text>
+       <Text style={{ textAlign: 'center', fontWeight: '800', fontSize: 20, color: 'black' }}>MyCardScreen!</Text>
       </View>
     );
   }
