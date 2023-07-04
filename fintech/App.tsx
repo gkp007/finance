@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnboardingScreen from './components/OnboardingScreen';
@@ -13,11 +13,14 @@ import MyCardScreen from './components/MyCardScreen';
 import ProfileScreen from './components/ProfileScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntIcon from "react-native-vector-icons/AntDesign"
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Customcarousel from './components/Customcarousel'
 
 const Tab = createBottomTabNavigator();
 
 function MainTabNavigator() {
   return (
+    
     <Tab.Navigator screenOptions={{
       tabBarShowLabel:false,
     }} > 
@@ -27,7 +30,7 @@ function MainTabNavigator() {
         
         options={{
           headerShown: false,
-          tabBarIcon: ({focused}) =>  <AntIcon name="home" size={28} color = {focused ? "red": "black"} />
+          tabBarIcon: ({focused}) =>  <AntIcon name="home" size={28} color = {focused ? "darkred": "black"} />
         }}
       />
       <Tab.Screen
@@ -35,7 +38,7 @@ function MainTabNavigator() {
         component={StatisticScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({focused}) => <AntIcon name="barschart" size={28} color = {focused ? "red": "black"}/>
+          tabBarIcon: ({focused}) => <AntIcon name="barschart" size={28} color = {focused ? "darkred": "black"}/>
         }}
       />
       <Tab.Screen
@@ -50,14 +53,14 @@ function MainTabNavigator() {
               width:60,
               justifyContent:"center",
               alignItems:"center",
-              backgroundColor:"darkslategrey" ,
-              borderColor:"darkslategrey",
+              backgroundColor:"darkred" ,
+              borderColor:"darkred",
               borderWidth: 2,
               borderRadius: 30,
               top: -25,
               elevation:5
             }}>
-          <AntIcon name="pluscircleo" size={28} color = {focused ? "black": "white"}/>
+          <AntIcon name="pluscircleo" size={28} color = {"white"}/>
           </View>
           )
         }}
@@ -67,13 +70,13 @@ function MainTabNavigator() {
         component={MyCardScreen}
         options={{
           headerShown: false,
-          tabBarIcon: ({focused}) => < Icon name="credit-card-outline" size={28} color = {focused ? "red": "black"}/>
+          tabBarIcon: ({focused}) => < Icon name="credit-card-outline" size={28} color = {focused ? "darkred": "black"}/>
         }}
       />
       <Tab.Screen
         name="ProfileScreen" component={ProfileScreen} options={{
           headerShown: false,
-          tabBarIcon: ({focused}) => < AntIcon name="user" size={28} color = {focused ? "red": "black"} />
+          tabBarIcon: ({focused}) => < AntIcon name="user" size={28} color = {focused ? "darkred": "black"} />
         }} />
     </Tab.Navigator>
   );
@@ -83,6 +86,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen options={{ headerShown: false }} name="OnboardingScreen" component={OnboardingScreen} />
