@@ -7,7 +7,8 @@ npm install react-native-onboarding-swiper
 npm i react-native-elements --save                                  
 npm install react-native-elements                                  
 npm i prop-types                                                     
-npm i react-native-onboarding-swiper                                
+npm i react-native-onboarding-swiper 
+                               
 npm install tailwind-rn                                             
 npm i react-native-tailwindcss                                       
 npm  add nativewind                                                   
