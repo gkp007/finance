@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, StyleSheet } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnboardingScreen from './components/OnboardingScreen';
@@ -15,6 +15,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntIcon from "react-native-vector-icons/AntDesign"
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Customcarousel from './components/Customcarousel'
+import LinearGradient from 'react-native-linear-gradient';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -95,5 +97,6 @@ export default function App() {
         <Stack.Screen options={{ headerShown: false }} name="MainTabNavigator" component={MainTabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 }

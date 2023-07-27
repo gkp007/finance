@@ -4,7 +4,10 @@ import { Dimensions } from 'react-native';
 import Customcarousel from '../components/Customcarousel';
 import { Badge } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import HorizontalTab from './HorizontalTab';
+import AwesomeButton, { ThemedButton } from "react-native-really-awesome-button";
+import FontAwesome, { SolidIcons, RegularIcons, BrandIcons } from 'react-native-fontawesome';
 
 const width = (Dimensions.get('screen').width - 16 * 3) / 2;
 
@@ -25,48 +28,51 @@ function HomeScreen() {
   ];
 
   return (
+    <LinearGradient colors={['#89fffd','#f0fff0', '#f0f8ff' ]} style={styles.gradient}>
     <SafeAreaView style={styles.container}>
-      <View>
+      
         <View>
-          <Text style={styles.greetingText}>Good Morning!</Text>
-          <Text style={styles.userName}>Gk Pattanaik</Text>
-     
+          <View>
+            <Text style={styles.greetingText}>Good Morning!</Text>
+            <Text style={styles.userName}>Gk Pattanaik</Text>
+          </View>
+          <Image source={require('../assets/images/gk.jpg')} style={styles.profileImage} />
+          <View style={styles.badgeContainer}>
+            <Badge value={3} status='error' />
+          </View>
         </View>
-        <Image source={require('../assets/images/gk.jpg')} style={styles.profileImage} />
-        <View style={styles.badgeContainer}>
-          <Badge value={3} status='error' />
+
+        <View style={styles.carouselContainer}>
+          <Customcarousel data={data} />
         </View>
-      </View>
 
-      <View style={styles.carouselContainer}>
-        <Customcarousel data={data} />
-      </View>
-
-      <View>
-          <Text style={styles.headingText}>Our Services</Text>
+        <View>
+          <Text style={styles.headingText}>Services</Text>
           <HorizontalTab/>
-      </View>
+        </View>
 
-      <View style={styles.containerRow}>
-        <View style={styles.itemContainer}>
-          <Icon name="home" size={30} color="black" />
-          {/* Content for the first item */}
+        <View style={styles.containerRow}>
+          <View style={styles.itemContainer}>
+            <Icon name="home" size={30} color="#8b0000" style={styles.icon}/>
+            {/* Content for the first item */}
+          </View>
+          <View style={styles.itemContainer}>
+            <Icon name="car" size={30} color="#8b0000" style={styles.icon}/>
+          </View>
         </View>
-        <View style={styles.itemContainer}>
-          <Icon name="car" size={30} color="black" />
-        </View>
-      </View>
 
-      <View style={styles.containerRow}>
-        <View style={styles.itemContainer}>
-          <Icon name="camera" size={30} color="black" />
-          {/* Content for the third item */}
+        <View style={styles.containerRow}>
+          <View style={styles.itemContainer}>
+            <Icon name="camera" size={30} color="#8b0000" style={styles.icon}/>
+            {/* Content for the third item */}
+          </View>
+          <View style={styles.itemContainer}>
+            <Icon name="home" size={30} color="#8b0000" style={styles.icon} />
+            {/* Content for the fourth item */}
+          </View>
         </View>
-        <View style={styles.itemContainer}>
-          {/* Content for the fourth item */}
-        </View>
-      </View>
     </SafeAreaView>
+    </LinearGradient>
   );
 }
 
@@ -74,6 +80,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS == 'android' ? StatusBar.currentHeight : 0,
+  },
+  gradient: {
+    flex: 1,
   },
   greetingText: {
     fontSize: 18,
@@ -110,19 +119,23 @@ const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
     marginHorizontal: 8,
-    backgroundColor: 'lightgray',
+    borderWidth: 1,
+    borderColor: `#8b0000`,
     height: 150,
-    borderRadius: 8,
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor:'red',
   },
   headingText: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 15,
     color: 'black',
-    top:20
+  },
+  icon: {
+    backgroundColor: `#d2f1fa`,
+    padding: 18,
+    borderRadius: 10,
   },
 });
 
